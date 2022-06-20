@@ -203,3 +203,64 @@ var buscador = (parametro) => {
     return clientes.filter((cliente) => cliente.nombre.includes(parametro));
 }
 console.log(buscador('a'));
+
+/////////////////////////////////////////////////////////////
+// Join 
+var elementos = ['aire', 'fuego', 'agua', 'tierra'];
+var resultado = elementos.join('--');
+console.log(resultado);
+
+var clientes = [
+    {id: 1, nombre: 'Roberto'},
+    {id: 2, nombre: 'Ivan'},
+    {id: 3, nombre: 'Rafael'},
+    {id: 4, nombre: 'Fatima'},
+    {id: 5, nombre: 'Isaias'}
+]
+// console.log(clientes.join());
+var csvGenerator = (array, separator='\t') => {
+    let headers = Object.keys(array[0]).join(separator)
+    let data = array.map((element) => Object.values(element).join(separator))
+    console.log(headers);
+    data.forEach(element => console.log(element))
+}
+csvGenerator(clientes);
+// console.log(Object.values({id: 5, nombre: 'Isaias'}));
+//console.log(Object.keys({id: 5, nombre: 'Isaias'}));
+
+/////////////////////////////////////////////////////////////
+// concat - sort - splice - slice 
+// CONCAT 
+var array1 = [1,2,3,4,5];
+var array2 = [6,7,8,9,10];
+var array3 = array1.concat(array2);
+var array4 = [array1, array2];
+console.log(array1);
+console.log(array2);
+console.log(array3);
+console.log(array4);
+
+// SORT 
+var array1 = [1,2,3,4,5,6,7,8,9,0];
+console.log(array1.sort());
+
+var meses = ['Dic', 'Ene', 'Mar', 'Feb'];
+console.log(meses.sort());
+
+var array = [1, 10000, 21, 30, 4];
+var ascendentede = array.sort((a,b) => a - b );
+console.log(ascendentede);
+array = [1, 10000, 21, 30, 4];
+var descendente = array.sort((a,b) => b - a );
+console.log(descendente);
+
+// SPLICE 
+var nombres = ['Roberto','Ivan','Rafael','Fatima','Isaias'];
+nombres.splice(1,1,'Ivan 2');
+console.log(nombres);
+
+// SLICE 
+var nombres = ['Roberto','Ivan','Rafael','Fatima','Isaias'];
+var resultado = nombres.slice(1,3);
+console.log(resultado);
+console.log(nombres);
