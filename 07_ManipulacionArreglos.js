@@ -1,5 +1,5 @@
 /**
- * Manupulacion arreglos
+ * Manipulación arreglos
  */
 
 // ForEach
