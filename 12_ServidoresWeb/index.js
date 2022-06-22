@@ -47,24 +47,31 @@ app.post('/', (req,res) => {
   });
 
   // modificar usuario
-app.put('/:id', (req, res) => {
-    let {params : {id}} = req;
-    let { body : updUser} = req;
-    let user =  Service.updateUser(id,updUser);
-    res.status(202).json({
-        message : 'Usuario modificado',
-        body : user,
-    })
-})
+  app.put('/:id', (req,res) => {
+    let {
+        params: {id},
+        body : newValues
+    } = req;
+    res.json(
+        {
+            message : `Actualiza usuario ${id}`,
+            body: Service.updateUser(id, newValues),
+        }
+    );
+});
 
 // eliminar usuario
-app.delete('/:id', (req, res) => {
-    let {params : {id}} = req;
-    Service.deleteUser(id);
-    res.status(202).json({
-        message : 'Usuario eliminado',
-    })
-})
+app.delete('/:id', (req,res) => {
+  let {
+      params: {id}
+  } = req;
+  res.json(
+      {
+          message : `Borra usuario ${id}`,
+          body: Service.deleteUser(id),
+      }
+  );
+});
 
 app.listen(port, () => {
     console.log(`Servidor escuchando en http://localhost:${port}`);

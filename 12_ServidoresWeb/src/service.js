@@ -15,14 +15,18 @@ module.exports = {
     data.push(newUser);
     return newUser;
   },
-  updateUser : (id, dataUser) => { // actualizar un usuario
+  updateUser: (id, newValues) => { // actualiza un usuario
     let identificador = Number(id);
-    data[identificador] = dataUser;
-    return dataUser;
-  },
-  deleteUser : (id) => { // actualizar un usuario
-    let identificador = Number(id);
-    let usuario = data.slice(identificador, 1); // eliminamos el elemento
-    return usuario;
-  },
+    let idx = data.findIndex(dato => dato.id === identificador);
+    data[idx].first_name = newValues.first_name;
+    data[idx].last_name = newValues.last_name;
+    data[idx].email = newValues.email;
+    return data;
+},
+ deleteUser: (id) => { // borra un usuario
+  let identificador = Number(id);
+  let idx = data.findIndex(dato => dato.id === identificador);
+  data.splice(idx,1);
+  return data;
+},
 };
